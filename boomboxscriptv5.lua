@@ -310,7 +310,7 @@ UIGradient_11.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00,
 UIGradient_11.Parent = Frame_9
 
 Frame_10.Parent = Canvas
-Frame_10.BackgroundColor3 = Color3.fromRGB(97, 222, 127)
+Frame_10.BackgroundColor3 = Color3.fromRGB(92, 51, 255)
 Frame_10.Position = UDim2.new(0.0250000004, 0, 0.774999976, 0)
 Frame_10.Size = UDim2.new(0.449999988, 0, 0.200000003, 0)
 
@@ -341,7 +341,7 @@ PlayButton.FontFace.Weight = Enum.FontWeight.Bold
 
 Frame_11.Parent = Canvas
 Frame_11.AnchorPoint = Vector2.new(1, 0)
-Frame_11.BackgroundColor3 = Color3.fromRGB(222, 200, 74)
+Frame_11.BackgroundColor3 = Color3.fromRGB(92, 51, 255)
 Frame_11.Position = UDim2.new(0.975000024, 0, 0.774999976, 0)
 Frame_11.Size = UDim2.new(0.449999988, 0, 0.200000003, 0)
 
