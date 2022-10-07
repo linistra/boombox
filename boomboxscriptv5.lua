@@ -482,6 +482,21 @@ UIGradient_21.Parent = Vis_8
 
 --
 
+local function GetPlayer(Name)
+	local Players = game:GetService("Players");
+	local LocalPlayer = Players.LocalPlayer;
+	Name = Name:lower():gsub(" ","")
+	for _,x in next, Players:GetPlayers() do
+		if x ~= LocalPlayer then
+			if x.Name:lower():match("^"..Name) then
+				return x;
+			elseif x.DisplayName:lower():match("^"..Name) then
+				return x;
+			end
+		end
+	end
+end
+
 local plr = game.Players.LocalPlayer
 
 local Info = TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In, 0, false, 0)
@@ -581,16 +596,38 @@ end)
 
 plr.Chatted:connect(function(message)
 	if message:sub(1,4) == "$off" then
-		for _,v in pairs(game.Players:GetPlayers()) do
-			if v.Name ~= plr.Name then
-				-- Character
-				for _,v2 in pairs(game.Workspace[v.Name]:GetChildren()) do
-					if v2:IsA("Tool") and string.lower(v2.Name) == "boombox" then v2.Handle.Sound.Playing = false; end
+		local args = message:split(" ")
+		
+		if args[2] == "all" then
+			for _,v in pairs(game.Players:GetPlayers()) do
+				if v.Name ~= plr.Name then
+					for _,v2 in pairs(game.Workspace[v.Name]:GetChildren()) do
+						if v2:IsA("Tool") and v2:FindFirstChild("Handle") and v2.Handle:FindFirstChild("Sound") then
+							v2.Handle.Sound.Playing = false
+						end
+					end
+
+					for _,v2 in pairs(v.Backpack:GetChildren()) do
+						if v2:IsA("Tool") and v2:FindFirstChild("Handle") and v2.Handle:FindFirstChild("Sound") then
+							v2.Handle.Sound.Playing = false
+						end
+					end
+				end
+			end
+		else
+			local pl = GetPlayer(args[2])
+			
+			if pl then
+				for _,v2 in pairs(game.Workspace[pl.Name]:GetChildren()) do
+					if v2:IsA("Tool") and v2:FindFirstChild("Handle") and v2.Handle:FindFirstChild("Sound") then
+						v2.Handle.Sound.Playing = false
+					end
 				end
 
-				-- Backpack
-				for _,v2 in pairs(v.Backpack:GetChildren()) do
-					if v2:IsA("Tool") and string.lower(v2.Name) == "boombox" then v2.Handle.Sound.Playing = false; end
+				for _,v2 in pairs(pl.Backpack:GetChildren()) do
+					if v2:IsA("Tool") and v2:FindFirstChild("Handle") and v2.Handle:FindFirstChild("Sound") then
+						v2.Handle.Sound.Playing = false
+					end
 				end
 			end
 		end
@@ -622,7 +659,7 @@ plr.Chatted:connect(function(message)
 	end
 end)
 
-local function FYCBC_fake_script() -- UIGradient_2.LocalScript 
+local function FYCBC_fake_script()
 	local script = Instance.new('LocalScript', UIGradient_2)
 
 	while true do
@@ -631,7 +668,7 @@ local function FYCBC_fake_script() -- UIGradient_2.LocalScript
 	end
 end
 coroutine.wrap(FYCBC_fake_script)()
-local function JLHHVQL_fake_script() -- UIGradient_3.LocalScript 
+local function JLHHVQL_fake_script()
 	local script = Instance.new('LocalScript', UIGradient_3)
 
 	while true do
