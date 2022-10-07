@@ -164,7 +164,7 @@ Frame_3.Parent = Canvas
 Frame_3.BackgroundColor3 = Color3.fromRGB(222, 222, 222)
 Frame_3.BorderColor3 = Color3.fromRGB(222, 222, 222)
 Frame_3.Position = UDim2.new(0, 0, 0.125, 0)
-Frame_3.Size = UDim2.new(0.600000024, 0, 0.0500000007, 0)
+Frame_3.Size = UDim2.new(0.700000024, 0, 0.0500000007, 0)
 
 UICorner_5.CornerRadius = UDim.new(100, 0)
 UICorner_5.Parent = Frame_3
